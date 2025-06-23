@@ -5,6 +5,45 @@
   </head>
   <body>
     <h1>Welcome to your Dashboard 🎉</h1>
-    <p>You have successfully logged in.</p>
+    <p id="welcomeText">You have successfully logged in.</p>
+    <button id="logoutBtn">Logout</button>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signOut
+      } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAubQ66qALMDmaenI2Tu_TpAxtluUFmocA",
+        authDomain: "jskilllink.firebaseapp.com",
+        projectId: "jskilllink",
+        storageBucket: "jskilllink.appspot.com",
+        messagingSenderId: "74779883744",
+        appId: "1:74779883744:web:70198d069b033026283885",
+        measurementId: "G-5SWEPTW5MF"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          document.getElementById("welcomeText").innerText =
+            "Welcome, " + user.displayName + " (" + user.email + ")";
+        } else {
+          // Not logged in, go back to login page
+          window.location.href = "index.html";
+        }
+      });
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        signOut(auth).then(() => {
+          window.location.href = "index.html";
+        });
+      });
+    </script>
   </body>
 </html>
