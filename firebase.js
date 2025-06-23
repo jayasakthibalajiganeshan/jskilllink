@@ -9,7 +9,7 @@ import {
 
 // Firebase config
 const firebaseConfig = {
-  apiKey: "",
+  apiKey: "AIzaSyAubQ66qALMDmaenI2Tu_TpAxtluUFmocA",
   authDomain: "jskilllink.firebaseapp.com",
   projectId: "jskilllink",
   storageBucket: "jskilllink.appspot.com",
