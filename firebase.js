@@ -29,6 +29,7 @@ document.getElementById("loginBtn").addEventListener("click", () => {
     .then((result) => {
       console.log("User:", result.user.displayName);
       alert("Welcome, " + result.user.displayName);
+      window.location.href = "dashboard.html"; // 🚨 Or whatever page you want to show
     })
     .catch((error) => {
       console.error("Error:", error);
